@@ -17,7 +17,7 @@ import {
 	AlignmentToolbar,
 } from '@wordpress/block-editor';
 
-import { isBootstrap5Active, isCssGridEnabled } from '../helper';
+import {getGridColumns, isBootstrap5Active, isCssGridEnabled} from '../helper';
 import {
 	verticalAlignBottom,
 	verticalAlignCenter,
@@ -60,7 +60,7 @@ const ColumnSizeRangeControl = ( {
 				} );
 			} }
 			min={ 0 }
-			max={ 12 }
+			max={ getGridColumns() }
 			{ ...props }
 		/>
 	);

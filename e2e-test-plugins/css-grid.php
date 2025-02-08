@@ -8,5 +8,6 @@
  * @package wp-bootstrap-blocks-test-css-grid
  */
 
+define( 'WP_BOOTSTRAP_BLOCKS_GRID_COLUMNS', '12' );
 define( 'WP_BOOTSTRAP_BLOCKS_BOOTSTRAP_VERSION', '5' );
 define( 'WP_BOOTSTRAP_BLOCKS_ENABLE_CSS_GRID', true );

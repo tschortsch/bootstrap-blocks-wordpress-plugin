@@ -10,7 +10,6 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import edit from './edit';
 import transforms from './transforms';
 import { columns } from '../icons';
-import './editor.scss';
 import './style.scss';
 
 registerBlockType( 'wp-bootstrap-blocks/row', {

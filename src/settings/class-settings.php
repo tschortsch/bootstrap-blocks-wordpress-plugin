@@ -54,6 +54,27 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Settings', false ) ) :
 		const BOOTSTRAP_VERSION_DEFAULT_VALUE = '5';
 
 		/**
+		 * Grid columns constant.
+		 *
+		 * @var string
+		 */
+		const GRID_COLUMNS_CONSTANT_NAME = 'WP_BOOTSTRAP_BLOCKS_GRID_COLUMNS';
+
+		/**
+		 * Name of bootstrap version option.
+		 *
+		 * @var string
+		 */
+		const GRID_COLUMNS_OPTION_NAME = self::OPTION_PREFIX . 'grid_columns';
+
+		/**
+		 * Default bootstrap version value.
+		 *
+		 * @var int
+		 */
+		const GRID_COLUMNS_DEFAULT_VALUE = '12';
+
+		/**
 		 * Name of enable CSS grid constant.
 		 *
 		 * @var string
@@ -123,6 +144,9 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Settings', false ) ) :
 
 				// Filter saving of bootstrap version
 				add_filter( 'pre_update_option_' . self::BOOTSTRAP_VERSION_OPTION_NAME, array( __CLASS__, 'pre_update_option_bootstrap_version' ), 10, 2 );
+
+				// Filter saving of grid columns
+				add_filter( 'pre_update_option_' . self::GRID_COLUMNS_OPTION_NAME, array( __CLASS__, 'pre_update_option_grid_columns' ), 10, 2 );
 
 				// Filter saving of enable css grid option
 				add_filter( 'pre_update_option_' . self::ENABLE_CSS_GRID_OPTION_NAME, array( __CLASS__, 'pre_update_option_css_grid_enabled' ), 10, 2 );
@@ -196,6 +220,24 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Settings', false ) ) :
 						'5' => '5.x',
 					),
 					'constant_name' => self::BOOTSTRAP_VERSION_CONSTANT_NAME,
+					'disabled' => false,
+				),
+				array(
+					'option_name' => self::GRID_COLUMNS_OPTION_NAME,
+					'label' => __( 'Grid columns', 'wp-bootstrap-blocks' ),
+					'description' => '',
+					'type' => 'select',
+					'default' => self::GRID_COLUMNS_DEFAULT_VALUE,
+					'options' => array(
+						'12' => '12',
+						'18' => '18',
+						'24' => '24',
+						'36' => '36',
+						'45' => '45',
+						'60' => '60',
+						'90' => '90',
+					),
+					'constant_name' => self::GRID_COLUMNS_CONSTANT_NAME,
 					'disabled' => false,
 				),
 				array(
@@ -373,6 +415,18 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Settings', false ) ) :
 		}
 
 		/**
+		 * Always use constant value for grid columns if set.
+		 *
+		 * @param string $new_value The new, unserialized option value.
+		 * @param string $old_value The old option value.
+		 *
+		 * @return string
+		 */
+		public static function pre_update_option_grid_columns( $new_value, $old_value ) {
+			return defined( self::GRID_COLUMNS_CONSTANT_NAME ) ? strval( constant( self::GRID_COLUMNS_CONSTANT_NAME ) ) : $new_value;
+		}
+
+		/**
 		 * Only enable CSS grid if bootstrap version is >= 5 and always use constant value if set.
 		 *
 		 * @param string $new_value The new, unserialized option value.
@@ -393,6 +447,20 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Settings', false ) ) :
 		 */
 		public static function get_bootstrap_version() {
 			return strval( self::get_option( self::BOOTSTRAP_VERSION_OPTION_NAME, self::BOOTSTRAP_VERSION_CONSTANT_NAME, self::BOOTSTRAP_VERSION_DEFAULT_VALUE ) );
+		}
+
+		/**
+		 * Get bootstrap version option.
+		 *
+		 * @return string Bootstrap version from options.
+		 */
+		public static function get_grid_columns() {
+			if (self::is_bootstrap_5_active()) {
+				return strval(self::get_option(self::GRID_COLUMNS_OPTION_NAME, self::GRID_COLUMNS_CONSTANT_NAME,
+					self::GRID_COLUMNS_DEFAULT_VALUE));
+			}
+
+			return self::GRID_COLUMNS_DEFAULT_VALUE;
 		}
 
 		/**

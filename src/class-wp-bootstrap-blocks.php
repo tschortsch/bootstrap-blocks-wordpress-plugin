@@ -161,7 +161,7 @@ class WP_Bootstrap_Blocks {
 		// Styles.
 		wp_enqueue_style(
 			$this->token . '-styles', // Handle.
-			esc_url( $this->assets_url ) . 'style-index.css', // Block style CSS.
+			esc_url( $this->assets_url ) . 'style-index-12.css', // Block style CSS.
 			array(),
 			self::$version
 		);
@@ -172,9 +172,9 @@ class WP_Bootstrap_Blocks {
 	 */
 	public function enqueue_block_editor_assets() {
 		// Scripts.
-		$index_path = $this->assets_dir . 'index.js';
-		$index_url = esc_url( $this->assets_url ) . 'index.js';
-		$index_asset_file = $this->assets_dir . 'index.asset.php';
+		$index_path = $this->assets_dir . 'index-' . Settings::get_grid_columns() . '.js';
+		$index_url = esc_url( $this->assets_url ) . 'index-' . Settings::get_grid_columns() . '.js';
+		$index_asset_file = $this->assets_dir . 'index-' . Settings::get_grid_columns() . '.asset.php';
 		$index_asset = file_exists( $index_asset_file )
 			? require_once $index_asset_file
 			: null;
@@ -194,6 +194,7 @@ class WP_Bootstrap_Blocks {
 			'wpBootstrapBlocks',
 			array(
 				'bootstrapVersion' => Settings::get_bootstrap_version(),
+				'gridColumns' => Settings::get_grid_columns(),
 				'isBootstrap5Active' => Settings::is_bootstrap_5_active(),
 				'isCssGridEnabled' => Settings::is_css_grid_enabled(),
 			)
@@ -202,7 +203,7 @@ class WP_Bootstrap_Blocks {
 		// Styles.
 		wp_enqueue_style(
 			$this->token . '-editor-styles', // Handle.
-			esc_url( $this->assets_url ) . 'index.css', // Block editor CSS.
+			esc_url( $this->assets_url ) . 'index-' . Settings::get_grid_columns() . '.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			self::$version
 		);

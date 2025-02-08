@@ -1,4 +1,7 @@
 <?php
+
+use WP_Bootstrap_Blocks\Settings;
+
 function bootstrap_theme_setup() {
 	/*
 	 * Let WordPress manage the document title.
@@ -47,11 +50,11 @@ function bootstrap_scripts() {
 	if ( \WP_Bootstrap_Blocks\Settings::is_bootstrap_5_active() ) {
 		if ( \WP_Bootstrap_Blocks\Settings::is_css_grid_enabled() ) {
 			wp_enqueue_script( 'popper.js', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js', array(), '2.11.5', true );
-			wp_enqueue_style( 'bootstrap5-styles', get_template_directory_uri() . '/bootstrap-with-cssgrid.css', array(), '5.2.0' );
+			wp_enqueue_style( 'bootstrap5-styles', get_template_directory_uri() . '/bootstrap-with-cssgrid-' . Settings::get_grid_columns() . '.css', array(), '5.2.0' );
 			wp_enqueue_script( 'bootstrap5-scripts', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js', array( 'popper.js' ), '5.2.0', true );
 		} else {
 			wp_enqueue_script( 'popper.js', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js', array(), '2.11.5', true );
-			wp_enqueue_style( 'bootstrap5-styles', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css', array(), '5.2.0' );
+			wp_enqueue_style( 'bootstrap5-styles', get_template_directory_uri() . '/bootstrap-without-cssgrid-' . Settings::get_grid_columns() . '.css', array(), '5.2.0' );
 			wp_enqueue_script( 'bootstrap5-scripts', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js', array( 'popper.js' ), '5.2.0', true );
 		}
 	} else {

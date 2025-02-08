@@ -1,7 +1,7 @@
 @use "sass:math";
 @import "../assets/gutenberg";
 
-@mixin make-grid-columns($current-size-index: 1, $sizes: ("xxl", "xl", "lg", "md", "sm", "xs"), $grid-columns: 12) {
+@mixin make-grid-columns($current-size-index: 1, $sizes: ("xxl", "xl", "lg", "md", "sm", "xs")) {
 	@if $current-size-index <= length($sizes) {
 		$size: nth($sizes, $current-size-index);
 

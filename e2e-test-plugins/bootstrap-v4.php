@@ -8,4 +8,5 @@
  * @package wp-bootstrap-blocks-test-bootstrap-v4
  */
 
+define( 'WP_BOOTSTRAP_BLOCKS_GRID_COLUMNS', '12' );
 define( 'WP_BOOTSTRAP_BLOCKS_BOOTSTRAP_VERSION', '4' );

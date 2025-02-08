@@ -35,13 +35,15 @@
  * @var $content string
  */
 
+use WP_Bootstrap_Blocks\Settings;
+
 $classes = array();
 $column_content_classes = array();
 
 if ( array_key_exists( 'sizeXs', $attributes ) && $attributes['sizeXs'] > 0 ) {
 	array_push( $classes, 'g-col-' . $attributes['sizeXs'] );
 } else {
-	array_push( $classes, 'g-col-12' );
+	array_push( $classes, 'g-col-' . Settings::get_grid_columns() );
 }
 if ( array_key_exists( 'sizeSm', $attributes ) && $attributes['sizeSm'] > 0 ) {
 	array_push( $classes, 'g-col-sm-' . $attributes['sizeSm'] );

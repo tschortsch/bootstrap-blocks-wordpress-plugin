@@ -41,6 +41,8 @@
  * @var $content string
  */
 
+use WP_Bootstrap_Blocks\Settings;
+
 $classes = array();
 $column_content_classes = array();
 
@@ -49,7 +51,7 @@ if ( array_key_exists( 'equalWidthXs', $attributes ) && $attributes['equalWidthX
 } elseif ( array_key_exists( 'sizeXs', $attributes ) && $attributes['sizeXs'] > 0 ) {
 	array_push( $classes, 'col-' . $attributes['sizeXs'] );
 } else {
-	array_push( $classes, 'col-12' );
+	array_push( $classes, 'col-' . Settings::get_grid_columns() );
 }
 if ( array_key_exists( 'equalWidthSm', $attributes ) && $attributes['equalWidthSm'] ) {
 	array_push( $classes, 'col-sm' );

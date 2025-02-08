@@ -107,6 +107,12 @@ if ( ! class_exists( '\WP_Bootstrap_Blocks\Column\Column_Block_Type', false ) ) 
 			'contentVerticalAlignment' => '',
 		);
 
+		public function __construct()
+		{
+			$this->default_attributes['sizeXs'] = Settings::get_grid_columns();
+			parent::__construct();
+		}
+
 		/**
 		 * Get name of block template.
 		 *

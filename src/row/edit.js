@@ -27,7 +27,7 @@ import {
 	verticalAlignTop,
 } from '../icons';
 
-import { isBootstrap5Active, isCssGridEnabled } from '../helper';
+import {getGridColumns, isBootstrap5Active, isCssGridEnabled} from '../helper';
 
 export const CUSTOM_TEMPLATE_NAME = 'custom';
 
@@ -62,13 +62,13 @@ let templates = [
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 6,
+					sizeMd: Math.floor(getGridColumns() / 2),
 				},
 			],
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 6,
+					sizeMd: Math.floor(getGridColumns() / 2),
 				},
 			],
 		],
@@ -95,13 +95,13 @@ let templates = [
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 4,
+					sizeMd: (getGridColumns() / 3),
 				},
 			],
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 8,
+					sizeMd: (getGridColumns() / 3) * 2,
 				},
 			],
 		],
@@ -128,13 +128,13 @@ let templates = [
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 8,
+					sizeMd: (getGridColumns() / 3) * 2,
 				},
 			],
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 4,
+					sizeMd: (getGridColumns() / 3),
 				},
 			],
 		],
@@ -160,19 +160,19 @@ let templates = [
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 4,
+					sizeMd: (getGridColumns() / 3),
 				},
 			],
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 4,
+					sizeMd: (getGridColumns() / 3),
 				},
 			],
 			[
 				'wp-bootstrap-blocks/column',
 				{
-					sizeMd: 4,
+					sizeMd: (getGridColumns() / 3),
 				},
 			],
 		],

@@ -41,11 +41,11 @@
     "prettier": "npm:wp-prettier@3.0.3"
   },
   "scripts": {
-    "start": "wp-scripts start src/index.js src/settings/settings.js",
+    "start": "wp-scripts start src/index-12.js src/index-18.js src/index-24.js src/index-36.js src/index-45.js src/index-60.js src/index-90.js src/settings/settings.js",
     "dev": "npm run start",
     "prebuild": "npm run check-engines",
-    "build": "wp-scripts build src/index.js src/settings/settings.js",
-    "build-theme-assets": "sass test-themes/bootstrap/bootstrap-with-cssgrid.scss test-themes/bootstrap/bootstrap-with-cssgrid.css",
+    "build": "wp-scripts build src/index-12.js src/index-18.js src/index-24.js src/index-36.js src/index-45.js src/index-60.js src/index-90.js src/settings/settings.js",
+    "build-theme-assets": "sass test-themes/bootstrap/bootstrap-with-cssgrid-12.scss test-themes/bootstrap/bootstrap-with-cssgrid-12.css && sass test-themes/bootstrap/bootstrap-with-cssgrid-18.scss test-themes/bootstrap/bootstrap-with-cssgrid-18.css && sass test-themes/bootstrap/bootstrap-with-cssgrid-24.scss test-themes/bootstrap/bootstrap-with-cssgrid-24.css && sass test-themes/bootstrap/bootstrap-with-cssgrid-36.scss test-themes/bootstrap/bootstrap-with-cssgrid-36.css && sass test-themes/bootstrap/bootstrap-with-cssgrid-45.scss test-themes/bootstrap/bootstrap-with-cssgrid-45.css && sass test-themes/bootstrap/bootstrap-with-cssgrid-60.scss test-themes/bootstrap/bootstrap-with-cssgrid-60.css && sass test-themes/bootstrap/bootstrap-with-cssgrid-90.scss test-themes/bootstrap/bootstrap-with-cssgrid-90.css && sass test-themes/bootstrap/bootstrap-without-cssgrid-12.scss test-themes/bootstrap/bootstrap-without-cssgrid-12.css && sass test-themes/bootstrap/bootstrap-without-cssgrid-18.scss test-themes/bootstrap/bootstrap-without-cssgrid-18.css && sass test-themes/bootstrap/bootstrap-without-cssgrid-24.scss test-themes/bootstrap/bootstrap-without-cssgrid-24.css && sass test-themes/bootstrap/bootstrap-without-cssgrid-36.scss test-themes/bootstrap/bootstrap-without-cssgrid-36.css && sass test-themes/bootstrap/bootstrap-without-cssgrid-45.scss test-themes/bootstrap/bootstrap-without-cssgrid-45.css && sass test-themes/bootstrap/bootstrap-without-cssgrid-60.scss test-themes/bootstrap/bootstrap-without-cssgrid-60.css && sass test-themes/bootstrap/bootstrap-without-cssgrid-90.scss test-themes/bootstrap/bootstrap-without-cssgrid-90.css",
     "update-translations": "scripts/translations/extract-messages.sh && scripts/translations/update-translation-files.sh && scripts/translations/compile-translation-files.sh",
     "wp-env": "wp-env",
     "check-engines": "wp-scripts check-engines",
